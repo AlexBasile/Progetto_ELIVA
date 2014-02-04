@@ -1,6 +1,20 @@
-im1 = imread('1.jpeg');
 
-images = cell(1,16);
-for index = 1:16
-    images{1, index} = imread()
+Im1 = imread('test_img/1.jpg');
+
+Images = cell(1,15);
+
+for index = 2:16
+    Images{1, index-1} = imread(strcat('test_img/',num2str(index),'.jpg'));
 end
+
+sim = SIFT_Similarity(Im1,Images);
+figure;
+subplot(4,4,1);
+imshow(Images{1, 1});
+title('Immagine originale');
+for index = 2:16
+    subplot(4,4,index);
+    imshow(Images{1, index-1});
+    title(strcat('Immagine',));
+end
+sim
