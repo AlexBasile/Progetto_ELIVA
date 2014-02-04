@@ -10,7 +10,7 @@ end
 sim = SIFT_Similarity(Im1,Images);
 figure;
 subplot(4,4,1);
-imshow(Images{1, 1});
+imshow(Im1);
 title('Immagine originale');
 for index = 2:16
     subplot(4,4,index);
