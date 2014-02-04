@@ -6,7 +6,7 @@ run('vlfeat-0.9.17/toolbox/vl_setup')
 %carico l'immagine di partenza e la visualizzo
 %I = vl_impattern('roofs1');
 %image(I);
-I = imread('roofs1.jpg');
+I = imread('linea.tif');
 imshow(I);
 %La trasformo in Scala di Grigi in precisione singola in modo da
 %avere un intervallo tra [0, 255] per i valori
@@ -24,15 +24,15 @@ I = single(rgb2gray(I));
 
 % Stampo 50 keypoint casuali tra quelli trovati
 perm = randperm(size(f,2)) ;
-sel = perm(1:50) ;
-h1 = vl_plotframe(f(:,sel)) ;
-h2 = vl_plotframe(f(:,sel)) ;
+%sel = perm(1:100) ;
+h1 = vl_plotframe(f) ;
+h2 = vl_plotframe(f) ;
 set(h1,'color','k','linewidth',3) ;
 set(h2,'color','y','linewidth',2) ;
 
 % Stampo i descrittori dei keypoint trovati
-h3 = vl_plotsiftdescriptor(d(:,sel),f(:,sel)) ;
-set(h3,'color','g') ;
+% h3 = vl_plotsiftdescriptor(d(:,sel),f(:,sel)) ;
+% set(h3,'color','g') ;
 
 
 

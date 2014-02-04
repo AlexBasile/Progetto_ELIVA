@@ -1,0 +1,6 @@
+im1 = imread('1.jpeg');
+
+images = cell(1,16);
+for index = 1:16
+    images{1, index} = imread()
+end
