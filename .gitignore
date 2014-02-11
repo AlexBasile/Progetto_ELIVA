@@ -1,2 +1,4 @@
 vlfeat-0.9.17/
 vlfeat-0.9.18/
+*.m~
+*.asv
