@@ -1,7 +1,7 @@
 clear; clc;
 
 %carico le librerie in memoria
-run('vlfeat-0.9.18/toolbox/vl_setup')
+run('vlfeat-0.9.17/toolbox/vl_setup')
 
 %carico l'immagine di partenza e la visualizzo
 %I = vl_impattern('roofs1');

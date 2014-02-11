@@ -19,17 +19,7 @@ p = 0;
 %estraggo descrittori dall'immagine in input
 Im_1 = single(rgb2gray(Im1));
 Im_1 = edge(Im_1, 'canny'); 
-imshow(Im_1);
-
-[f1,d1] = vl_sift(single(Im_1));
-h1 = vl_plotframe(f1);
-h2 = vl_plotframe(f1);
-set(h1,'color','k','linewidth',3);
-set(h2,'color','y','linewidth',2);
-figure;
-
-
-
+[f1,d1] = vl_sift(Im_1);
 [f1_r, f1_c] = size(f1);
 
 %csotruisco la struttura per memorizzare le similarita'
@@ -41,14 +31,7 @@ sim = zeros(1,c);
 for index = 1 : c
     Im_t = single(rgb2gray(Images{1,index}));
     Im_t = edge(Im_t, 'canny');
-    imshow(Im_t);
-    [ft, dt] = vl_sift(single(Im_t));
-    h1 = vl_plotframe(ft);
-    h2 = vl_plotframe(ft);
-    set(h1,'color','k','linewidth',3);
-    set(h2,'color','y','linewidth',2);
-    figure;
-    
+    [ft, dt] = vl_sift(Im_t);
     [matches, score] = vl_ubcmatch(d1, dt);
     
     %match parziale

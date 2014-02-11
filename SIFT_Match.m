@@ -1,7 +1,7 @@
 clc; clear; close all;
 %carico le immagini
 Ia = imread('test_img/1.jpg');
-Ib = imread('test_img/16.jpg');
+Ib = imread('test_img/2.jpg');
 imshow(Ia);
 %le converto in scala di grigi in singola precisione
 Ia = single(rgb2gray(Ia));
@@ -30,6 +30,18 @@ set(h2_b,'color','y','linewidth',2) ;
 
 [ra, ca] = size(da);
 [rb, cb] = size(db);
+[matches, score] = vl_ubcmatch(da, db);
+score = sort(score);
+
+if(size(score,2) > 10)
+    distanzaMedia = sum(score(1:10))/10;
+elseif(size(score,2) > 0 && size(score,2) < 10)
+    distanzaMedia = sum(score)/size(score,2);
+end
+maxSift = max(score(1:10))*1.5;
+sim = 1 - (distanzaMedia/maxSift)
+
+
 %{
 if cb > ca
     [matches, score] = vl_ubcmatch(da, db, 1.1);
@@ -54,9 +66,9 @@ end
 media_p = num/length(score);
 
 
-%}
+
 
 sim = Sift_Matching(da,db);
 
 media_p=w_mean(sim(:))
-
+%}
