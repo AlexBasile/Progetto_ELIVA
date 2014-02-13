@@ -13,6 +13,10 @@ for index = 1:16
 end
 
 colors = ['b.';'m.';'c.';'r.';'g.';'w.';'y.';'k.'];
+<<<<<<< HEAD
+=======
+
+>>>>>>> 5abe1cb41b646ebc56361ee06a21943be43aaf82
 figure;
 for j = 1:16
     subplot(4,4,j);
