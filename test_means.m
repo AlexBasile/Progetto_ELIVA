@@ -13,10 +13,7 @@ for index = 1:16
 end
 
 colors = ['b.';'m.';'c.';'r.';'g.';'w.';'y.';'k.'];
-<<<<<<< HEAD
-=======
 
->>>>>>> 5abe1cb41b646ebc56361ee06a21943be43aaf82
 figure;
 for j = 1:16
     subplot(4,4,j);
@@ -27,7 +24,7 @@ figure;
 %titolo=strcat('Akula con num_cluster = ',num2str(num_cluster),' canny = ',num2str(canny));
 %name(titolo);
 
-'similarity tra akuna senza descrittori dei cluster'
+'similarity tra akula senza descrittori dei cluster'
 [centers1, assignments] = SIFT_AKULA(Images{1,sel_img},canny,num_cluster);
 [centers_ord,ind1] = sort(centers1(1,:));
 [A1] = create_descriptor(centers1(:,ind1), assignments);
@@ -46,7 +43,7 @@ l=sim;
 [l,i]=sort(l,'descend')
 
 
-'similarity tra akuna con descrittori dei cluster'
+'similarity tra akula con descrittori dei cluster'
 
 [centers1, assignments, fi, di] = SIFT_AKULA(Images{1,sel_img},canny,num_cluster);
 [centers_ord,ind1] = sort(centers1(1,:));
