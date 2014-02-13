@@ -17,11 +17,12 @@ for j = 1:16
 end
 figure;
 
-for i = 1:1
-    %subplot(4,4,i);
+for i = 1:16
+    subplot(4,4,i);
     imshow(Images{1,i});
     [centers, assignments, fi, di] = SIFT_AKULA(Images{1,i});
-    [A, dA] = create_descriptor(centers, assignments, di);
+    [A, dA] = create_descriptor(centers, assignments, di,fi);
+    
     hold on
     for index = 1:size(centers,2)
         plot(centers(1,index), centers(2,index), colors(index,:),'MarkerSize',50);
