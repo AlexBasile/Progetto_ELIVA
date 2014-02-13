@@ -1,7 +1,7 @@
 clc; clear; close all;
 
 %carico le librerie in memoria
-run('vlfeat-0.9.17/toolbox/vl_setup')
+run('vlfeat-0.9.18/toolbox/vl_setup')
 
 num_cluster = 8;
 canny=1;
@@ -13,7 +13,7 @@ for index = 1:16
 end
 
 colors = ['b.';'m.';'c.';'r.';'g.';'w.';'y.';'k.'];
-
+figure;
 for j = 1:16
     subplot(4,4,j);
     imshow(Images{1,j});
@@ -49,7 +49,7 @@ l=sim;
 [A1, dA1] = create_descriptor(centers1(:,ind1), assignments);
 
 for i=1:16
-    subplot(2,4,mod(i,8)+1);
+    subplot(4,2,mod(i,8)+1);
     imshow(Images{1,i});
     
     [centers2, assignments, fi, di] = SIFT_AKULA(Images{1,i},canny,num_cluster);
