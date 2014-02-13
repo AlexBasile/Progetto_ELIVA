@@ -43,12 +43,16 @@ for index = 1:size(center,2)
     
     %se sono stati passati i descrittori allora calcolo il A completo
     if complete
-        for j = 1:length(elems)
-            %sommo tutti vettori colonna dei descrittori
-            dA(:,index) = dA(:,index) + di_b(:,elems(j));
-        end
-        %faccio la media dividendo per il numero di elementi nel cluster
-        dA(:,index) = dA(:,index)/length(elems); 
+        dA(:,index) = sum(di_b(:,elems),2) / length(elems);
+        
+        %{
+            for j = 1:length(elems)
+                %sommo tutti vettori colonna dei descrittori
+                dA(:,index) = dA(:,index) + di_b(:,elems(j));
+            end
+            %faccio la media dividendo per il numero di elementi nel cluster
+            dA(:,index) = dA(:,index)/
+        %}
     end
 end
 

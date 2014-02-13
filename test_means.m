@@ -1,5 +1,9 @@
 clc; clear; close all;
 
+%carico le librerie in memoria
+run('vlfeat-0.9.17/toolbox/vl_setup')
+
+
 Images = cell(1,16);
 for index = 1:16
     Images{1, index} = imread(strcat('test_img/',num2str(index),'.jpg'));
@@ -14,7 +18,7 @@ end
 figure;
 
 for i = 1:1
-    subplot(4,4,i);
+    %subplot(4,4,i);
     imshow(Images{1,i});
     [centers, assignments, fi, di] = SIFT_AKULA(Images{1,i});
     [A, dA] = create_descriptor(centers, assignments, di);
