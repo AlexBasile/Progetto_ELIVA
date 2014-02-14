@@ -75,7 +75,39 @@ d=1-d / max(d);
 l=sim*0.5+0.5*d;
 [l,i]=sort(l,'descend')
 
+canny=2;
+figure;
+'similarity tra akula con descrittori dei cluster e dilatazione di canny'
 
+[centers1, assignments, fi, di] = SIFT_AKULA(Images{1,sel_img},canny,num_cluster);
+[centers_ord,ind1] = sort(centers1(1,:));
+[A1, dA1] = create_descriptor(centers1(:,ind1), assignments);
+
+for i=1:16
+    subplot(4,2,mod(i,8)+1);
+    imshow(Images{1,i});
+    
+    [centers2, assignments, fi, di] = SIFT_AKULA(Images{1,i},canny,num_cluster);
+    [centers_ord,ind2] = sort(centers2(1,:));
+    [A2, dA2] = create_descriptor(centers2(:,ind2), assignments,di,fi);
+    [sim(i) d(i)] = AKULA_Sim( A1,A2,dA1,dA2 );
+    
+    hold on
+    for index = 1:size(centers2,2)
+        plot(centers2(1,index), centers2(2,index), colors(index,:),'MarkerSize',50);
+        ind = find(assignments == index);
+        plot(fi(1,ind), fi(2,ind), colors(index,:),'MarkerSize',25);
+    end
+    if i==8
+        figure;
+    end
+end
+
+sim=1-sim / max(sim);
+d=1-d / max(d);
+
+l=sim*0.5+0.5*d;
+[l,i]=sort(l,'descend')
 %{
 
 for i = 1:16

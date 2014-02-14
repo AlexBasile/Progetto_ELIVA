@@ -14,8 +14,10 @@ end
 
 
 I_bn = single(rgb2gray(image));
-if type
+if type==1
     I_bn = single(edge(I_bn, 'canny'));
+elseif type ==2
+    I_bn=single(I_bn.*imdilate(edge(I_bn, 'canny'),ones(3,3)));
 end
 
 %calcolo SIFT
