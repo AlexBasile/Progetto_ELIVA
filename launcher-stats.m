@@ -10,7 +10,7 @@ num_images=32;
 
 Images = cell(1,num_images);
 for index = 1:num_images
-    Images{1, index} = imread(strcat('test_img/',num2str(index),'.jpg'));
+    Images{1, index} = imread(strcat('test_img/',num2str(index),'.bmp'));
 end
 
 colors = ['b.';'m.';'c.';'r.';'g.';'w.';'y.';'k.'];
