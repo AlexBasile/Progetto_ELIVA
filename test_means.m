@@ -6,16 +6,18 @@ run('vlfeat-0.9.18/toolbox/vl_setup')
 num_cluster = 8;
 canny=1;
 sel_img=16;
+num_images=32;
 
-Images = cell(1,16);
-for index = 1:16
+
+Images = cell(1,num_images);
+for index = 1:num_images
     Images{1, index} = imread(strcat('test_img/',num2str(index),'.jpg'));
 end
 
 colors = ['b.';'m.';'c.';'r.';'g.';'w.';'y.';'k.'];
 
 figure;
-for j = 1:16
+for j = 1:num_images
     subplot(4,4,j);
     imshow(Images{1,j});
 end
@@ -29,7 +31,7 @@ figure;
 [centers_ord,ind1] = sort(centers1(1,:));
 [A1] = create_descriptor(centers1(:,ind1), assignments);
 
-for i=1:16
+for i=1:num_images
     [centers2, assignments] = SIFT_AKULA(Images{1,i},canny,num_cluster);
     [centers_ord,ind2] = sort(centers2(1,:));
     [A2] = create_descriptor(centers2(:,ind2), assignments);
@@ -49,7 +51,7 @@ l=sim;
 [centers_ord,ind1] = sort(centers1(1,:));
 [A1, dA1] = create_descriptor(centers1(:,ind1), assignments);
 
-for i=1:16
+for i=1:num_images
     subplot(4,2,mod(i,8)+1);
     imshow(Images{1,i});
     
@@ -83,7 +85,7 @@ figure;
 [centers_ord,ind1] = sort(centers1(1,:));
 [A1, dA1] = create_descriptor(centers1(:,ind1), assignments);
 
-for i=1:16
+for i=1:num_images
     subplot(4,2,mod(i,8)+1);
     imshow(Images{1,i});
     
@@ -110,7 +112,7 @@ l=sim*0.5+0.5*d;
 [l,i]=sort(l,'descend')
 %{
 
-for i = 1:16
+for i = 1:num_images
     subplot(2,4,mod(i,8)+1);
 
     imshow(Images{1,i});
@@ -134,7 +136,7 @@ end
 
 
 figure;
-for i = 1:16
+for i = 1:num_images
     subplot(2,4,mod(i,8)+1);
     imshow(Images{1,i});
     [centers, assignments, fi, di] = SIFT_AKULA(Images{1,i},canny,num_cluster);
@@ -152,7 +154,7 @@ for i = 1:16
 end
 
 figure;
-for i = 1:16
+for i = 1:num_images
     subplot(2,4,mod(i,8)+1);
     imshow(Images{1,i});
     [centers, assignments, fi, di] = SIFT_AKULA(Images{1,i},canny,num_cluster);
