@@ -52,7 +52,7 @@ for index = 1:size(center,2)
     elseif pesato
         weights = zeros (size(elems));
         for j = 1 :length(elems)
-            dist = sqrt((fi(1,elems(j))-center(1,:)).^2+(fi(2,elems(j))-center(2,:)).^2);
+            dist = sqrt((double(fi(1,elems(j)))-center(1,:)).^2+(double(fi(2,elems(j)))-center(2,:)).^2);
             dist_ord = sort(dist);
             %considero soltanto le prime 40% distanze dagli altri cluster
             k = dist_ord(1)/sum( dist_ord( 2 : uint8( 4/10 * length(center) ) ));

@@ -1,9 +1,11 @@
 function [centers, assignments, fi, di] = SIFT_AKULA( image, type, num_cluster)
-%SIFT_AKULA Summary of this function goes here
+%SIFT_AKULA 
 %   Image  = immagine di input
-%   type = true/false
-%          true = applico il filtro di canny
-%          false = calcolo i keypoint standard di SIFT
+%   type = 0/1/2
+%          0 = calcolo i keypoint standard di SIFT
+%          1 = applico il filtro di canny
+%          2 = applico il filtro di canny e filtro morfologico di
+%          dilatazione
 
 if nargin < 2
     type = 0;

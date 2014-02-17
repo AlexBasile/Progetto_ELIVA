@@ -18,7 +18,7 @@ colors = ['b.';'m.';'c.';'r.';'g.';'w.';'y.';'k.'];
 
 figure;
 for j = 1:num_images
-    subplot(4,4,j);
+    subplot(4,8,j);
     imshow(Images{1,j});
 end
 
