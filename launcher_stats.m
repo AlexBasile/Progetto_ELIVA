@@ -69,9 +69,9 @@ for i=1:num_images
     imshow(Images{1,i});
     
     if mode==0
-        [centers2, assignments2] = SIFT_AKULA(Images{1,sel_img},canny,num_cluster);
+        [centers2, assignments2] = SIFT_AKULA(Images{1,i},canny,num_cluster);
     else
-        [centers2, assignments2, fi2, di2] = SIFT_AKULA(Images{1,sel_img},canny,num_cluster);
+        [centers2, assignments2, fi2, di2] = SIFT_AKULA(Images{1,i},canny,num_cluster);
     end;
     [centers_ord,ind2] = sort(centers2(1,:));
 
