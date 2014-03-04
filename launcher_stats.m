@@ -1,8 +1,4 @@
-clc; clear; close all;
-
-%carico le librerie in memoria
-run('vlfeat-0.9.18/toolbox/vl_setup')
-
+function[] = launcher_stats(sel_img,num_iter,canny,mode)
 %%%Variabili del programma settabile dall'utente
 %%%
 
@@ -14,26 +10,26 @@ run('vlfeat-0.9.18/toolbox/vl_setup')
     %%conto anche dei descrittori dei cluster calcolati attraverso la
     %%pesatura deikeypoint facenti parte il cluster facendo attenzione a
     %%diminuire i keypoint contesi tra i cluster
-    mode = 2;
+    %mode = 2;
 
     %%canny = 
     %% 0 verrá lanciato lo script con l'algoritmo base fornito da Akula
     %% 1 verrá lanciato con l'algoritmo di Canny base
     %% 2 verrá lanciato con Canny + dilatazione dei bordi 
-    canny = 2;
+    %canny = 2;
 
     %%num_cluster = numero di cluster da ricercare nelle immagini
     num_cluster = 8;
 
     %%sel_img = identificativo dell'immagine da prendere come query per il
     %%programma
-    sel_img=1;
+    %sel_img=1;
 
     %%num_images = numero totale delle immagini presente nella cartella
     %%test_img
     num_images = 32;
     %%num_iter = numero totale delle iterazioni
-    num_iter = 4;
+    %num_iter = 100;
     %%enable_plot = 0/1
     enable_plot = 0;
     
@@ -66,7 +62,7 @@ else
 end;
 
 l=zeros(num_iter,num_images);
-parfor iter = 1:num_iter
+for iter = 1:num_iter
     sim=zeros(1,num_images);
     d=zeros(1,num_images);
     for i=1:num_images
@@ -118,10 +114,10 @@ parfor iter = 1:num_iter
     if mode == 0
         l(iter,:)=sim;
     else
-        l(iter,:)=sim*0.5+0.5*d;
+        l(iter,:)=sim*0.75+0.25*d;
     end
 end
 r=sum(l)/num_iter;
 
 %[r, indici]=sort(results,'descend');
-risultati=[risultati;r];
+csvwrite(strcat('risultati',num2str(sel_img),'-m',num2str(mode),'c',num2str(canny),'-',num2str(num_iter),'.csv'),r)
